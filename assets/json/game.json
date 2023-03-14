@@ -1,0 +1,35 @@
+
+{   
+    "game": [
+        {
+            "id": 1,
+            "title"  : "INTELIGENCIA ARTIFICIAL",
+            "subtitle"  : "Maquinas Pensantes",
+            "path"  : "assets/images/evento1.jpeg"
+        },
+        {
+            "id": 2,
+            "title"  : "MACHINNE LEARNING",
+            "subtitle"  : "Las maquinas pueden pensar?",
+            "path"  : "assets/images/evento2.jpg"
+        },
+        {
+            "id": 3,
+            "title"  : "BIG DATA",
+            "subtitle"  : "Ingreso al mundo de los datos",
+            "path"  : "assets/images/evento3.jpg"
+        },
+        {
+            "id": 4,
+            "title"  : "FLUTTER",
+            "subtitle"  : "Si si, todos son widgets",
+            "path"  : "assets/images/evento4.jpg"
+        },
+        {
+            "id": 5,
+            "title"  : "VIDEOJUEGOS",
+            "subtitle"  : "Desarrolando un videojuego en Unity",
+            "path"  : "assets/images/evento5.jpg"
+        }
+    ]
+}

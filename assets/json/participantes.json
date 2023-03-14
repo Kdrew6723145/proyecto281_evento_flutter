@@ -1,0 +1,88 @@
+{
+  "participantes": [
+    {
+      "ci_par": 111111,
+      "nick": "ana",
+      "clave": "123",
+      "fotografia": "foto3.jpg"
+    },
+    {
+      "ci_par": 123456,
+      "nick": "juan123",
+      "clave": "123",
+      "fotografia": "foto2.jpg"
+    },
+    {
+      "ci_par": 1029384,
+      "nick": "dangar",
+      "clave": "asdfg",
+      "fotografia": "foto4.jpg"
+    },
+    {
+      "ci_par": 1234567,
+      "nick": "mariam",
+      "clave": "letmein",
+      "fotografia": "foto11.jpg"
+    },
+    {
+      "ci_par": 2093847,
+      "nick": "cargonz",
+      "clave": "qwerty123",
+      "fotografia": "foto8.jpg"
+    },
+    {
+      "ci_par": 2938475,
+      "nick": "anat",
+      "clave": "qwerty",
+      "fotografia": "foto3.jpg"
+    },
+    {
+      "ci_par": 3847265,
+      "nick": "andresan",
+      "clave": "pass123",
+      "fotografia": "foto1.jpg"
+    },
+    {
+      "ci_par": 4567890,
+      "nick": "sofvarg",
+      "clave": "123456",
+      "fotografia": "foto7.jpg"
+    },
+    {
+      "ci_par": 4829301,
+      "nick": "jomend",
+      "clave": "abc123",
+      "fotografia": "foto2.jpg"
+    },
+    {
+      "ci_par": 5839201,
+      "nick": "lauhern",
+      "clave": "zxcvb",
+      "fotografia": "foto5.jpg"
+    },
+    {
+      "ci_par": 5839203,
+      "nick": "anacast",
+      "clave": "iloveyou",
+      "fotografia": "foto9.jpg"
+    },
+    {
+      "ci_par": 8392015,
+      "nick": "migmor",
+      "clave": "987654",
+      "fotografia": "foto12.jpg"
+    },
+    {
+      "ci_par": 8475930,
+      "nick": "luiram",
+      "clave": "123abc",
+      "fotografia": "foto10.jpg"
+    },
+    {
+      "ci_par": 9302857,
+      "nick": "juanrod",
+      "clave": "passw0rd",
+      "fotografia": "foto6.jpg"
+    }
+  ]
+}
