@@ -31,8 +31,8 @@ class _ParticipantePageState extends State<ParticipantePage> {
       backgroundColor: HexColor("#16285A"),
       body: screens[_index],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color.fromARGB(255, 0, 56, 102),
-        selectedItemColor: Color.fromARGB(255, 224, 205, 31),
+        backgroundColor: const Color.fromARGB(255, 0, 56, 102),
+        selectedItemColor: const Color.fromARGB(255, 224, 205, 31),
         type: BottomNavigationBarType.fixed,
         currentIndex: _index,
         unselectedItemColor: Colors.white,
