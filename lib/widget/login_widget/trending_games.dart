@@ -1,4 +1,5 @@
 import 'package:eventos_flutter/pages/vistas_expositor/expositor_page.dart';
+import 'package:eventos_flutter/pages/vistas_participante/vista_comentarios.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:eventos_flutter/theme/app_colors.dart';
@@ -56,9 +57,9 @@ class TrendingGames extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Row(
+                      const Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           Text(
                             "Total Inscritos: X",
                             style: TextStyle(
@@ -67,7 +68,9 @@ class TrendingGames extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(width: 40,),
+                          SizedBox(
+                            width: 40,
+                          ),
                           Text(
                             "Cupos:  Y",
                             style: TextStyle(
@@ -115,7 +118,7 @@ class TrendingGames extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const ExpositorPage()),
+                                              const VistaComentarios()),
                                     );
                                   },
                                   icon: const Icon(Icons.arrow_circle_right),

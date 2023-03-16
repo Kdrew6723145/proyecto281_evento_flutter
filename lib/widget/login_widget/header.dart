@@ -24,23 +24,23 @@ class Header extends StatelessWidget {
                 "https://blog.photofeeler.com/wp-content/uploads/2017/09/tinder-photo-size-tinder-picture-size-tinder-aspect-ratio-image-dimensions-crop.jpg"),
           ),
           const SizedBox(width: 10.0),
-           Column(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
               Text(
                 "BIENVENIDO",
                 style: TextStyle(
-                  color: Color.fromARGB(255, 221, 229, 255),
-                  fontSize: 12.0,
-                ),
+                    color: Color.fromARGB(255, 221, 229, 255),
+                    fontSize: 12.0,
+                    decoration: TextDecoration.none),
               ),
               Text(
                 "Usuario 1",
                 style: TextStyle(
-                  color: Color.fromARGB(255, 221, 229, 255),
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
-                ),
+                    color: Color.fromARGB(255, 221, 229, 255),
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                    decoration: TextDecoration.none),
               ),
             ],
           ),
