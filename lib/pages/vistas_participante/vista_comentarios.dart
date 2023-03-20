@@ -105,8 +105,8 @@ class _VistaComentariosState extends State<VistaComentarios> {
                       child: Container(
                         alignment: Alignment.center,
                         width: 90,
-                        child: const Row(
-                          children: [
+                        child: Row(
+                          children: const [
                             Text(
                               "Guardar",
                               style: TextStyle(color: Colors.white),
@@ -123,7 +123,7 @@ class _VistaComentariosState extends State<VistaComentarios> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     MaterialButton(
@@ -135,8 +135,8 @@ class _VistaComentariosState extends State<VistaComentarios> {
                       child: Container(
                         alignment: Alignment.center,
                         width: 70,
-                        child: const Row(
-                          children: [
+                        child: Row(
+                          children: const [
                             Icon(
                               Icons.arrow_back,
                               size: 18,

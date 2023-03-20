@@ -14,12 +14,12 @@ class VistaCertificados extends StatefulWidget {
 
 class _VistaCertificadosState extends State<VistaCertificados> {
 
-  var lista_cert=const [
+  var lista_cert=[
     Row(children: [Text("Actividad 1"),Text("Evento 1")]),
     Row(children: [Text("Actividad 2"),Text("Evento 1")]),
     Row(children: [Text("Actividad 3"),Text("Evento 1")]),
     Row(children: [Text("Actividad 4"),Text("Evento 2")]),
-    Row(children: [Text("Actividad 1"),Text("Evento 3")]),
+    Row(children: [Text("Actividad 1"),Text("Evento 3")])
   ];
   @override
   Widget build(BuildContext context) {
@@ -139,8 +139,8 @@ class _VistaCertificadosState extends State<VistaCertificados> {
                       child: Container(
                         alignment: Alignment.center,
                         width: 140,
-                        child: const Row(
-                          children: [
+                        child: Row(
+                          children: const [
                             Text(
                               "Descargar Todo",
                               style: TextStyle(color: Colors.white),

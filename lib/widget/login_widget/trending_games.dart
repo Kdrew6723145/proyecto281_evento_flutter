@@ -57,9 +57,9 @@ class TrendingGames extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const Row(
+                      Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                        children: const [
                           Text(
                             "Total Inscritos: X",
                             style: TextStyle(
