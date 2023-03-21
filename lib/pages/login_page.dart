@@ -11,7 +11,6 @@ import 'package:snippet_coder_utils/hex_color.dart';
 
 import '../services/participante_response.dart';
 
-
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -26,16 +25,17 @@ class _LoginPageState extends State<LoginPage> {
   dynamic user;
   String ruta = "";
   String nu = "";
-  String np="";
-  
+  String np = "";
+
   GlobalKey<FormState> globalFormKey = GlobalKey<FormState>();
+
+  //final _user= <String,FormBuilderFieldState>{};
   String? username;
   String? password;
 
-
-    Future login() async {
+  Future login() async {
     nu = username.toString();
-    np=password.toString();
+    np = password.toString();
     final resultado = await Dio().post(
         'https://eventosjwtbackend-production.up.railway.app/login/usuario/',
         data: {"nick": nu, "clave": np});
@@ -76,9 +76,7 @@ class _LoginPageState extends State<LoginPage> {
             textColor: Colors.white,
             fontSize: 16.0);
 
-            setState(() {
-              ruta="/participante";
-            });
+        ruta = "/participante";
         //Navigator.pushReplacementNamed(context, "/participante");
       } else {
         if (resp.containsValue("control")) {
@@ -93,10 +91,8 @@ class _LoginPageState extends State<LoginPage> {
               backgroundColor: Colors.red,
               textColor: Colors.white,
               fontSize: 16.0);
-              setState(() {
-              ruta="/control";
-            });
-         // Navigator.pushReplacementNamed(context, "/control");
+          ruta = "/control";
+          // Navigator.pushReplacementNamed(context, "/control");
         } else {
           dynamic particExpo = resultado.data;
           ParticipanteResponse e =
@@ -109,17 +105,13 @@ class _LoginPageState extends State<LoginPage> {
               backgroundColor: Colors.red,
               textColor: Colors.white,
               fontSize: 16.0);
-              setState(() {
-              ruta="/expositor";
-            });
+          ruta = "/expositor";
 
           //Navigator.pushReplacementNamed(context, "/expositor");
         }
       }
     }
   }
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -144,9 +136,7 @@ class _LoginPageState extends State<LoginPage> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
-          HeaderLogin()
-          ,
+          HeaderLogin(),
           const Center(
             child: Padding(
               padding: EdgeInsets.only(left: 20, bottom: 30, top: 50, right: 0),
@@ -165,9 +155,10 @@ class _LoginPageState extends State<LoginPage> {
                 context,
                 "Nombre de Usuario",
                 "Nombre de Usuario",
-                (String onval) => {
-                      if (onval.isEmpty) {"Usename cant be empty"}
+                 (String onval) => {
+                      if (onval.isEmpty) {print("El usuario no puede ser vacio")}else{print("El usuario no puede")}
                     },
+
                 (String onsave) => {username = onsave},
                 borderFocusColor: Colors.white,
                 prefixIconColor: Colors.white,
@@ -186,11 +177,7 @@ class _LoginPageState extends State<LoginPage> {
                 context,
                 "password",
                 "Contraseña",
-                (String onval) => {
-                      if (onval.isEmpty) {
-                        "Usename cant be empty"
-                        }
-                    },
+                (String onval) =>(onval.isEmpty)? {print("La contraseña no puede estar vacia")}:print("correcta la contraseña"),
                 (String onsave) => {password = onsave},
                 borderFocusColor: Colors.white,
                 prefixIconColor: Colors.white,
@@ -246,9 +233,10 @@ class _LoginPageState extends State<LoginPage> {
             child: FormHelper.submitButton(
                 "Login",
                 () => {
-                      //login(),
+                  globalFormKey.currentState,
+                      login(),
                       print("SIUU"),
-                      Navigator.pushNamed(context, ruta)
+                      //Navigator.pushNamed(context, ruta)
                     },
                 btnColor: HexColor("#283B71"),
                 borderColor: HexColor("#EBEBF5"),

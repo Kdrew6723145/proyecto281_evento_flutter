@@ -1,4 +1,5 @@
 import 'package:eventos_flutter/pages/login_page.dart';
+import 'package:eventos_flutter/pages/login_test.dart';
 import 'package:eventos_flutter/pages/vistas_participante/participante_page.dart';
 import 'package:eventos_flutter/pages/vistas_control/control_page.dart';
 import 'package:eventos_flutter/pages/vistas_expositor/expositor_page.dart';
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-        '/': (context) => const LoginPage(),
+        //'/': (context) => const LoginPage(),
+        '/': (context) => const LoginTest(),
         '/participanteView': (context) => const ParticipantePage(),
         '/controlView': (context) => const ControlPage(),
         '/ExpositorView': (context) => const ExpositorPage(),
