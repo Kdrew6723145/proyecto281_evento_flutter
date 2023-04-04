@@ -1,6 +1,10 @@
+import 'package:eventos_flutter/providers/dev_eventos.dart';
+import 'package:eventos_flutter/providers/dev_usuario.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:snippet_coder_utils/hex_color.dart';
 
+import '../../providers/dev_actividades.dart';
 import '../vistas_participante/vista_certificados.dart';
 import '../vistas_participante/vista_principal_partic.dart';
 
@@ -23,6 +27,10 @@ class _ExpositorPageState extends State<ExpositorPage> {
   static String nombreEvento = "Evento X";
   @override
   Widget build(BuildContext context) {
+    final actividadInfo = Provider.of<Actividad>(context);
+    final eventoInfo = Provider.of<Eventos>(context);
+    final usuarioInfo = Provider.of<Usuario>(context);
+
     return Scaffold(
       backgroundColor: HexColor("#16285A"),
       body: screens[_index],

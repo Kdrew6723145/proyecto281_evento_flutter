@@ -1,14 +1,20 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:eventos_flutter/providers/dev_actividades.dart';
+import 'package:eventos_flutter/providers/dev_usuario.dart';
+import 'package:eventos_flutter/services/control_response.dart';
+import 'package:eventos_flutter/services/expositor_response.dart';
 import 'package:eventos_flutter/widget/login_widget/header_login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
 import 'package:snippet_coder_utils/ProgressHUD.dart';
 import 'package:snippet_coder_utils/FormHelper.dart';
 import 'package:snippet_coder_utils/hex_color.dart';
 
+import '../providers/dev_eventos.dart';
 import '../services/participante_response.dart';
 
 class LoginPage extends StatefulWidget {
@@ -40,21 +46,10 @@ class _LoginPageState extends State<LoginPage> {
         'https://eventosjwtbackend-production.up.railway.app/login/usuario/',
         data: {"nick": nu, "clave": np});
 
-    Fluttertoast.showToast(
-        msg: nu,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        timeInSecForIosWeb: 2,
-        backgroundColor: Colors.red,
-        textColor: Colors.white,
-        fontSize: 16.0);
-
-    resultado;
-
     Map<String, dynamic> resp = jsonDecode(resultado.toString());
 
     if (resp.isEmpty) {
-      mensaje = "No Existe le usuario";
+      mensaje = "No Existe el usuario";
       Fluttertoast.showToast(
           msg: mensaje,
           toastLength: Toast.LENGTH_SHORT,
@@ -67,44 +62,19 @@ class _LoginPageState extends State<LoginPage> {
       if (resp.containsValue("participante")) {
         dynamic particUser = resultado.data;
         ParticipanteResponse p = ParticipanteResponse.fromJson(resultado.data);
-        Fluttertoast.showToast(
-            msg: "Partic",
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.CENTER,
-            timeInSecForIosWeb: 2,
-            backgroundColor: Colors.red,
-            textColor: Colors.white,
-            fontSize: 16.0);
-
         ruta = "/participante";
         //Navigator.pushReplacementNamed(context, "/participante");
       } else {
         if (resp.containsValue("control")) {
           dynamic particControl = resultado.data;
-          ParticipanteResponse c =
-              ParticipanteResponse.fromJson(resultado.data);
-          Fluttertoast.showToast(
-              msg: "Control",
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.CENTER,
-              timeInSecForIosWeb: 2,
-              backgroundColor: Colors.red,
-              textColor: Colors.white,
-              fontSize: 16.0);
+          ControlResponse c =
+              ControlResponse.fromJson(resultado.data);
           ruta = "/control";
           // Navigator.pushReplacementNamed(context, "/control");
         } else {
           dynamic particExpo = resultado.data;
-          ParticipanteResponse e =
-              ParticipanteResponse.fromJson(resultado.data);
-          Fluttertoast.showToast(
-              msg: "Expositor",
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.CENTER,
-              timeInSecForIosWeb: 2,
-              backgroundColor: Colors.red,
-              textColor: Colors.white,
-              fontSize: 16.0);
+          ExpositorResponse e =
+              ExpositorResponse.fromJson(resultado.data);
           ruta = "/expositor";
 
           //Navigator.pushReplacementNamed(context, "/expositor");
@@ -116,21 +86,23 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-      backgroundColor: HexColor("#16285A"),
-      body: ProgressHUD(
-        inAsyncCall: isApiCallProces,
-        key: UniqueKey(),
-        opacity: 0.3,
-        child: Form(
-          key: globalFormKey,
-          child: _loginUI(context),
+      child: Scaffold(
+        backgroundColor: HexColor("#16285A"),
+        body: ProgressHUD(
+          inAsyncCall: isApiCallProces,
+          key: UniqueKey(),
+          opacity: 0.3,
+          child: Form(
+            key: globalFormKey,
+            child: _loginUI(context),
+          ),
         ),
       ),
-    ));
+    );
   }
 
   Widget _loginUI(BuildContext context) {
+    final usuarioInfo = Provider.of<Usuario>(context);
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -155,10 +127,12 @@ class _LoginPageState extends State<LoginPage> {
                 context,
                 "Nombre de Usuario",
                 "Nombre de Usuario",
-                 (String onval) => {
-                      if (onval.isEmpty) {print("El usuario no puede ser vacio")}else{print("El usuario no puede")}
+                (String onval) => {
+                      if (onval.isEmpty)
+                        {print("El usuario no puede ser vacio")}
+                      else
+                        {print("El usuario no puede")}
                     },
-
                 (String onsave) => {username = onsave},
                 borderFocusColor: Colors.white,
                 prefixIconColor: Colors.white,
@@ -177,7 +151,9 @@ class _LoginPageState extends State<LoginPage> {
                 context,
                 "password",
                 "Contraseña",
-                (String onval) =>(onval.isEmpty)? {print("La contraseña no puede estar vacia")}:print("correcta la contraseña"),
+                (String onval) => (onval.isEmpty)
+                    ? {print("La contraseña no puede estar vacia")}
+                    : print("correcta la contraseña"),
                 (String onsave) => {password = onsave},
                 borderFocusColor: Colors.white,
                 prefixIconColor: Colors.white,
@@ -233,7 +209,8 @@ class _LoginPageState extends State<LoginPage> {
             child: FormHelper.submitButton(
                 "Login",
                 () => {
-                  globalFormKey.currentState,
+                      //usuarioInfo.reqActividad(nick, rol, nombre, email)
+                      globalFormKey.currentState,
                       login(),
                       print("SIUU"),
                       //Navigator.pushNamed(context, ruta)

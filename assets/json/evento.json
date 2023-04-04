@@ -1,0 +1,32 @@
+{   
+    "eventos": [
+        {
+            "id_evento": 1,
+            "nombre"  : "Congreso de Computadoras",
+            "direccion" : "UMSA-Paraninfo",
+            "fecha" : "2023-06-10",
+            "hora" : "15:00:00"
+        },
+        {
+            "id_evento": 2,
+            "nombre"  : "TICS en la Sociedad",
+            "direccion" : "UMSA-Paraninfo",
+            "fecha" : "2023-10-03",
+            "hora" : "19:00:00"
+        },
+        {
+            "id_evento": 3,
+            "nombre"  : "Machine Learning",
+            "direccion" : "UMSA-Paraninfo",
+            "fecha" : "2023-09-22",
+            "hora" : "10:00:00"
+        },
+        {
+            "id_evento": 4,
+            "nombre"  : "Sistemas Expertos",
+            "direccion" : "UMSA-Paraninfo",
+            "fecha" : "2023-05-17",
+            "hora" : "18:00:00"
+        }
+    ]
+}
