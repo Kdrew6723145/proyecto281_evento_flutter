@@ -1,4 +1,6 @@
+import 'package:eventos_flutter/pages/login_test.dart';
 import 'package:flutter/material.dart';
+import 'package:snippet_coder_utils/hex_color.dart';
 
 class Header extends StatelessWidget {
   const Header({Key? key}) : super(key: key);
@@ -8,8 +10,7 @@ class Header extends StatelessWidget {
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.only(
-        top: 40.0,
-        bottom: 20.0,
+        top: 30.0,
         left: 15.0,
         right: 15.0,
       ),
@@ -35,7 +36,7 @@ class Header extends StatelessWidget {
                     decoration: TextDecoration.none),
               ),
               Text(
-                "Usuario 1",
+                "Juan123",
                 style: TextStyle(
                     color: Color.fromARGB(255, 221, 229, 255),
                     fontSize: 16.0,

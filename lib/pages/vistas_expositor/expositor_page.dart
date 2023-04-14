@@ -27,9 +27,9 @@ class _ExpositorPageState extends State<ExpositorPage> {
   static String nombreEvento = "Evento X";
   @override
   Widget build(BuildContext context) {
-    final actividadInfo = Provider.of<Actividad>(context);
-    final eventoInfo = Provider.of<Eventos>(context);
-    final usuarioInfo = Provider.of<Usuario>(context);
+    //final actividadInfo = Provider.of<Actividad>(context);
+    //final eventoInfo = Provider.of<Eventos>(context);
+    //final usuarioInfo = Provider.of<Usuario>(context);
 
     return Scaffold(
       backgroundColor: HexColor("#16285A"),

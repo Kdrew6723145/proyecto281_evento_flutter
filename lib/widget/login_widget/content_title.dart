@@ -14,12 +14,12 @@ class ContentTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         margin: const EdgeInsets.only(
-          left: 150.0,
+          left: 0.0,
           right: 15.0,
         ),
         width: double.infinity,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               title,

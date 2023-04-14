@@ -1,9 +1,14 @@
+import 'dart:convert';
+
+import 'package:eventos_flutter/models/response_certificados_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:snippet_coder_utils/hex_color.dart';
 
 import '../../widget/login_widget/header.dart';
+import '../../widget/participante_widget/certificado_widget.dart';
 
 class VistaCertificados extends StatefulWidget {
   const VistaCertificados({super.key});
@@ -13,14 +18,26 @@ class VistaCertificados extends StatefulWidget {
 }
 
 class _VistaCertificadosState extends State<VistaCertificados> {
+  List<Certificado> certificados = [];
 
-  var lista_cert=[
-    Row(children: [Text("Actividad 1"),Text("Evento 1")]),
-    Row(children: [Text("Actividad 2"),Text("Evento 1")]),
-    Row(children: [Text("Actividad 3"),Text("Evento 1")]),
-    Row(children: [Text("Actividad 4"),Text("Evento 2")]),
-    Row(children: [Text("Actividad 1"),Text("Evento 3")])
-  ];
+  @override
+  void initState() {
+    loadCertificados();
+    super.initState();
+  }
+
+  loadCertificados() async {
+    final response = await loadJsonAssets("assets/json/certificados.json");
+    final result = ResponseCertificadoModel.fromJson(response);
+    certificados.addAll(result.certificado);
+    setState(() {});
+  }
+
+  Future<dynamic> loadJsonAssets(String path) async {
+    final response = await rootBundle.loadString(path);
+    return json.decode(response);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -51,23 +68,8 @@ class _VistaCertificadosState extends State<VistaCertificados> {
                 height: 500,
                 child: Column(
                   children: [
-                    Text(
-                      "Evento:  Nombre Evento",
-                      style: TextStyle(
-                        color: HexColor("#240774"),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-
                     Container(
-                      padding: EdgeInsets.only(
-                        top: 5,
-                        left: 10
-                      ),
+                      padding: EdgeInsets.only(top: 5, left: 10),
                       height: 300,
                       alignment: Alignment.topLeft,
                       margin: const EdgeInsets.all(10),
@@ -90,7 +92,9 @@ class _VistaCertificadosState extends State<VistaCertificados> {
                                   fontSize: 18,
                                 ),
                               ),
-                              SizedBox(width: 80,),
+                              SizedBox(
+                                width: 80,
+                              ),
                               Text(
                                 "Evento",
                                 style: TextStyle(
@@ -101,35 +105,13 @@ class _VistaCertificadosState extends State<VistaCertificados> {
                               ),
                             ],
                           ),
-                          lista_cert[0],
-                          lista_cert[1],
-                          /*
-                          ListView.builder(
-                            itemCount: lista_cert.length,
-                           scrollDirection: Axis.vertical,
-                           itemBuilder: (context, index) {
-                              return Container(
-                                child: lista_cert[index],
-                              );
-                           },
-                          )
-                          */
+
+                          //ListView()
+                          CertificadoLista(certificados: certificados),
+                          //const CertificadoLista(),
                         ],
                       ),
                     ),
-                    /* MaterialButton(
-                      shape: const CircleBorder(),
-                      color: Colors.red,
-                      padding: const EdgeInsets.all(20),
-                      onPressed: () => {
-                        print("Boton comentario"),
-                      },
-                      child: const Icon(
-                        Icons.send,
-                        size: 20,
-                        color: Colors.amber,
-                      ),
-                    ), */
                     MaterialButton(
                       color: HexColor("#240774"),
                       padding: const EdgeInsets.all(20),

@@ -1,0 +1,26 @@
+
+{   
+    "material": [
+        {
+            "id_material": 1,
+            "nombre"  : "Adventure",
+            "url": "",
+            "path_material": "assets/material/"
+        },
+        {
+            "id": 2,
+            "name"  : "Game",
+            "path_material": "assets/icons/ico_mountain.svg"
+        },
+        {
+            "id": 3,
+            "name"  : "Sport",
+            "path_material": "assets/icons/ico_mountain.svg"
+        },
+        {
+            "id": 4,
+            "name"  : "Action",
+            "path_material": "assets/icons/ico_mountain.svg"
+        }
+    ]
+}

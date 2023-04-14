@@ -45,7 +45,7 @@ class _ParticipantePageState extends State<ParticipantePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home,
+              Icons.archive_rounded,
             ),
             label: "Certificados",
           ),
