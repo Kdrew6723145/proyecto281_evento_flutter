@@ -1,0 +1,83 @@
+{   
+    "actividad": [
+        {
+            "id_actividad": 1,
+            "nombre"  : "IA con ChatGPT",
+            "direccion" : "UMSA-Paraninfo",
+            "fecha" : "2023-06-10",
+            "hora_inicio": "12:00:00",
+            "hora_fin": "13:00:00",
+            "capacidad_aula": 50,
+            "id_evento": 1
+        },
+        {
+            "id_actividad": 2,
+            "nombre"  : "TICS en la Sociedad",
+            "direccion" : "UMSA-Paraninfo",
+            "fecha" : "2023-10-03",
+            "hora_inicio": "15:00:00",
+            "hora_fin": "17:00:00",
+            "capacidad_aula": 40,
+            "id_evento": 1
+        },
+        {
+            "id_actividad": 3,
+            "nombre"  : "Machine Learning",
+            "direccion" : "UMSA-Paraninfo",
+            "hora_inicio": "10:00:00",
+            "hora_fin": "12:00:00",
+            "capacidad_aula": 10,
+            "id_evento": 1
+        },
+        {
+            "id_actividad": 4,
+            "nombre"  : "Sistemas Expertos",
+            "direccion" : "UMSA-Subsuelo A-B Carrera informatica",
+            "fecha" : "2023-05-17",
+            "hora_inicio": "19:00:00",
+            "hora_fin": "20:00:00",
+            "capacidad_aula": 30,
+            "id_evento": 2
+        },
+        {
+            "id_actividad": 5,
+            "nombre"  : "Inmersion en la Domotica",
+            "direccion" : "UMSA-A6P1 Carrera informatica",
+            "fecha" : "2023-05-17",
+            "hora_inicio": "13:00:00",
+            "hora_fin": "14:00:00",
+            "capacidad_aula": 25,
+            "id_evento": 2
+        },
+        {
+            "id_actividad": 6,
+            "nombre"  : "Logica Difusa para SE",
+            "direccion" : "UMSA-A2P3 Carrera informatica",
+            "fecha" : "2023-05-17",
+            "hora_inicio": "09:00:00",
+            "hora_fin": "12:00:00",
+            "capacidad_aula": 25,
+            "id_evento": 2
+        },
+        {
+            "id_actividad": 7,
+            "nombre"  : "Desarrollo Veterinaria con flutter",
+            "direccion" : "UMSA-A2P2 Carrera informatica",
+            "fecha" : "2023-05-17",
+            "hora_inicio": "12:00:00",
+            "hora_fin": "14:00:00",
+            "capacidad_aula": 30,
+            "id_evento": 2
+        },
+        {
+            "id_actividad": 7,
+            "nombre"  : "Servidores con Kali Linux",
+            "direccion" : "UMSA-AF PB Carrera informatica",
+            "fecha" : "2023-05-17",
+            "hora_inicio": "17:00:00",
+            "hora_fin": "18:00:00",
+            "capacidad_aula": 60,
+            "id_evento": 2
+        }
+    ]
+}

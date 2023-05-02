@@ -1,9 +1,11 @@
 import 'package:eventos_flutter/pages/vistas_expositor/expositor_page.dart';
+import 'package:eventos_flutter/pages/vistas_participante/vista_comen_opcional.dart';
 import 'package:eventos_flutter/pages/vistas_participante/vista_comentarios.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:eventos_flutter/theme/app_colors.dart';
 import 'package:eventos_flutter/models/response_games_model.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class TrendingGames extends StatelessWidget {
   const TrendingGames({
@@ -59,9 +61,9 @@ class TrendingGames extends StatelessWidget {
                       ),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           Text(
-                            "Total Inscritos: X",
+                            games[index].inscritos,
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 15.0,
@@ -72,7 +74,7 @@ class TrendingGames extends StatelessWidget {
                             width: 40,
                           ),
                           Text(
-                            "Cupos:  Y",
+                            games[index].cupos,
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 15.0,
@@ -136,11 +138,23 @@ class TrendingGames extends StatelessWidget {
                               ],
                             ),
                           ),
-                          const CircleAvatar(
-                            backgroundColor: Colors.white,
-                            radius: 15.0,
-                            child: Icon(Icons.calendar_month),
-                          )
+                          IconButton(
+                            onPressed: () {
+                              String vari = "Fecha del Evento: \n" +
+                                  games[index].fecha.toString();
+                              Fluttertoast.showToast(
+                                  msg: vari,
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.SNACKBAR,
+                                  timeInSecForIosWeb: 1,
+                                  backgroundColor:
+                                      Color.fromARGB(255, 3, 48, 100),
+                                  textColor: Colors.white,
+                                  fontSize: 16.0);
+                            },
+                            icon: const Icon(Icons.calendar_month),
+                            color: Colors.red,
+                          ),
                         ],
                       ),
                     ],

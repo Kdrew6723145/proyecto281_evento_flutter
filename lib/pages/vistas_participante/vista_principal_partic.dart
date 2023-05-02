@@ -5,6 +5,7 @@ import 'package:eventos_flutter/widget/login_widget/header.dart';
 import 'package:eventos_flutter/widget/login_widget/trending_games.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:snippet_coder_utils/hex_color.dart';
 
 import '../../models/response_category_model.dart';
 import '../../models/response_games_model.dart';
@@ -65,7 +66,16 @@ class _VistaPrincipalParticState extends State<VistaPrincipalPartic> {
           padding: EdgeInsets.zero,
           children: [
             const Header(),
-            const ContentTitle(title: "Evento X"),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  shadowColor: Colors.white,
+                  backgroundColor: HexColor("#283B71")),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text("SALIR"),
+            ),
+            const ContentTitle(title: "TICS en la Sociedad"),
             const SizedBox(
               height: 20,
             ),

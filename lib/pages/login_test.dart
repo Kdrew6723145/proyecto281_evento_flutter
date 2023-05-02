@@ -1,6 +1,9 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:eventos_flutter/pages/vistas_control/control_page.dart';
+import 'package:eventos_flutter/pages/vistas_expositor/expositor_page.dart';
+import 'package:eventos_flutter/pages/vistas_participante/participante_page.dart';
 import 'package:eventos_flutter/widget/login_widget/header_login.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -35,22 +38,12 @@ class _LoginTestState extends State<LoginTest> {
     final resultado = await Dio().post(
         'https://eventosjwtbackend-production.up.railway.app/login/usuario/',
         data: {"nick": controllerUser.text, "clave": controllerPassword.text});
-
-    Fluttertoast.showToast(
-        msg: nc,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        timeInSecForIosWeb: 2,
-        backgroundColor: Colors.red,
-        textColor: Colors.white,
-        fontSize: 16.0);
-
     resultado;
 
     Map<String, dynamic> resp = jsonDecode(resultado.toString());
 
     if (resp.isEmpty) {
-      mensaje = "No Existe le usuario";
+      mensaje = "No Existe el usuario";
       Fluttertoast.showToast(
           msg: mensaje,
           toastLength: Toast.LENGTH_SHORT,
@@ -64,14 +57,16 @@ class _LoginTestState extends State<LoginTest> {
         dynamic particUser = resultado.data;
         ParticipanteResponse p = ParticipanteResponse.fromJson(resultado.data);
         Fluttertoast.showToast(
-            msg: "Partic",
+            msg: "Bienvenido-> " + p.nick.toString(),
             toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.CENTER,
+            gravity: ToastGravity.TOP,
             timeInSecForIosWeb: 2,
             backgroundColor: Colors.red,
             textColor: Colors.white,
             fontSize: 16.0);
-        Navigator.pushReplacementNamed(context, "/participanteView");
+        //Navigator.pushReplacementNamed(context, "/participanteView");
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => ParticipantePage()));
       } else {
         if (resp.containsValue("control")) {
           dynamic particControl = resultado.data;
@@ -85,7 +80,8 @@ class _LoginTestState extends State<LoginTest> {
               backgroundColor: Colors.red,
               textColor: Colors.white,
               fontSize: 16.0);
-          Navigator.pushReplacementNamed(context, "/controlView");
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => ControlPage()));
         } else {
           dynamic particExpo = resultado.data;
           ParticipanteResponse e =
@@ -99,7 +95,8 @@ class _LoginTestState extends State<LoginTest> {
               textColor: Colors.white,
               fontSize: 16.0);
 
-          Navigator.pushReplacementNamed(context, "/expositorView");
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => ExpositorPage()));
         }
       }
     }
@@ -143,69 +140,52 @@ class _LoginTestState extends State<LoginTest> {
           ),
           Padding(
               padding: const EdgeInsets.all(8.0),
-              child: TextField(  
-                style: const TextStyle(
-                  color: Colors.white
-                ),
-                cursorColor: Colors.white60,     
+              child: TextField(
+                style: const TextStyle(color: Colors.white),
+                cursorColor: Colors.white60,
                 controller: controllerUser,
                 decoration: InputDecoration(
-                  hoverColor: Colors.white,
-                  focusColor: Colors.amber,
-                  suffixIconColor: Colors.red,
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(13)),
-                    borderSide: BorderSide(
-                      color: Colors.white
-                    )
-                  ),
-                  border: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(15))                                  
-                  ),
-                  prefixIcon: Icon(Icons.person),
-                  prefixIconColor: Colors.white,              
-                  suffixIcon: IconButton(
-                    icon: Icon(Icons.clear),
-                    onPressed: ()=> {controllerUser.clear()},
-                  ),
-                  hintText: "Ej. juan123",
-                  labelText: "Nombre de Usuario",
-                  labelStyle: TextStyle(
-                    color: Colors.white60.withOpacity(0.7)
-                  ),
-                  hintStyle: TextStyle(
-                    color: Colors.white.withOpacity(0.2)
-                  )
-                ),
+                    hoverColor: Colors.white,
+                    focusColor: Colors.amber,
+                    suffixIconColor: Colors.red,
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(13)),
+                        borderSide: BorderSide(color: Colors.white)),
+                    border: const OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15))),
+                    prefixIcon: Icon(Icons.person),
+                    prefixIconColor: Colors.white,
+                    suffixIcon: IconButton(
+                      icon: Icon(Icons.clear),
+                      onPressed: () => {controllerUser.clear()},
+                    ),
+                    hintText: "Ej. juan123",
+                    labelText: "Nombre de Usuario",
+                    labelStyle:
+                        TextStyle(color: Colors.white60.withOpacity(0.7)),
+                    hintStyle: TextStyle(color: Colors.white.withOpacity(0.2))),
               )),
           Padding(
               padding: const EdgeInsets.all(8.0),
-              child: TextField(  
-                style: TextStyle(
-                  color: Colors.white
-                ),                
+              child: TextField(
+                style: TextStyle(color: Colors.white),
                 obscureText: hidePassword,
-                cursorColor: Colors.white60,     
+                cursorColor: Colors.white60,
                 controller: controllerPassword,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(13)),
-                    borderSide: BorderSide(
-                      color: Colors.white
-                    )
-                  ),
+                      borderRadius: BorderRadius.all(Radius.circular(13)),
+                      borderSide: BorderSide(color: Colors.white)),
                   suffixIconColor: Colors.white,
                   border: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(15))
-                  ),
+                      borderRadius: BorderRadius.all(Radius.circular(15))),
                   prefixIcon: Icon(Icons.vpn_key),
-                  prefixIconColor: Colors.white,     
-                  labelStyle: TextStyle(
-                    color: Colors.white60.withOpacity(0.7)
-                  ),         
+                  prefixIconColor: Colors.white,
+                  labelStyle: TextStyle(color: Colors.white60.withOpacity(0.7)),
                   suffixIcon: IconButton(
-                    icon: Icon(hidePassword?Icons.visibility_off:Icons.visibility),
-                    onPressed: ()=> {
+                    icon: Icon(
+                        hidePassword ? Icons.visibility_off : Icons.visibility),
+                    onPressed: () => {
                       setState(() {
                         hidePassword = !hidePassword;
                       })
@@ -213,9 +193,7 @@ class _LoginTestState extends State<LoginTest> {
                   ),
                   hintText: "Ej. 123drdwa",
                   labelText: "Contraseña",
-                  hintStyle: TextStyle(
-                    color: Colors.white.withOpacity(0.2)
-                  ),                  
+                  hintStyle: TextStyle(color: Colors.white.withOpacity(0.2)),
                 ),
               )),
           Align(
@@ -249,8 +227,9 @@ class _LoginTestState extends State<LoginTest> {
           Center(
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                shadowColor: Colors.white,
-                  textStyle: TextStyle(), backgroundColor: HexColor("#283B71")),
+                  shadowColor: Colors.white,
+                  textStyle: TextStyle(),
+                  backgroundColor: HexColor("#283B71")),
               onPressed: () {
                 login();
               },

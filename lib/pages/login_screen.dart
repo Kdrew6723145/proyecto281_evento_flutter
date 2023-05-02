@@ -47,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           TextFormField(
                             controller: userController,
                             validator: (value) =>
-                                value == "" ? "Escriba un usuario" : null,
+                                value == "" ? "Escriba un usuarioddd" : null,
                             decoration: const InputDecoration(
                               prefixIcon: Icon(
                                 Icons.person,

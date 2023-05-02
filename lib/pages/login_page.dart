@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
     Map<String, dynamic> resp = jsonDecode(resultado.toString());
 
     if (resp.isEmpty) {
-      mensaje = "No Existe el usuario";
+      mensaje = "No Existe el usuario, intenta de nuevo";
       Fluttertoast.showToast(
           msg: mensaje,
           toastLength: Toast.LENGTH_SHORT,
@@ -67,14 +67,12 @@ class _LoginPageState extends State<LoginPage> {
       } else {
         if (resp.containsValue("control")) {
           dynamic particControl = resultado.data;
-          ControlResponse c =
-              ControlResponse.fromJson(resultado.data);
+          ControlResponse c = ControlResponse.fromJson(resultado.data);
           ruta = "/control";
           // Navigator.pushReplacementNamed(context, "/control");
         } else {
           dynamic particExpo = resultado.data;
-          ExpositorResponse e =
-              ExpositorResponse.fromJson(resultado.data);
+          ExpositorResponse e = ExpositorResponse.fromJson(resultado.data);
           ruta = "/expositor";
 
           //Navigator.pushReplacementNamed(context, "/expositor");
@@ -212,8 +210,8 @@ class _LoginPageState extends State<LoginPage> {
                       //usuarioInfo.reqActividad(nick, rol, nombre, email)
                       globalFormKey.currentState,
                       login(),
-                      print("SIUU"),
-                      //Navigator.pushNamed(context, ruta)
+                      //print("SIUU"),
+                      Navigator.pushNamed(context, ruta)
                     },
                 btnColor: HexColor("#283B71"),
                 borderColor: HexColor("#EBEBF5"),

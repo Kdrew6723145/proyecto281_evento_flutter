@@ -3,33 +3,50 @@
     "game": [
         {
             "id": 1,
-            "title"  : "INTELIGENCIA ARTIFICIAL",
+            "title"  : "MATEMATICAS A LA ALTURA",
+            "inscritos":"29",
+            "cupos":"40",
+            "fecha":"20-08-2023",
             "subtitle"  : "Maquinas Pensantes",
             "path"  : "assets/images/evento1.jpeg"
         },
         {
             "id": 2,
             "title"  : "MACHINNE LEARNING",
+            "inscritos":"12",
+            "cupos":"25",
+            "fecha":"15-04-2023",
             "subtitle"  : "Las maquinas pueden pensar?",
             "path"  : "assets/images/evento2.jpg"
         },
         {
             "id": 3,
             "title"  : "BIG DATA",
+            "inscritos":"40",
+            "cupos":"50",
+            "fecha":"10-06-2023",
             "subtitle"  : "Ingreso al mundo de los datos",
             "path"  : "assets/images/evento3.jpg"
         },
+        
         {
             "id": 4,
             "title"  : "FLUTTER",
+            "inscritos":"38",
+            "cupos":"40",
+            "fecha":"12-03-2023",
             "subtitle"  : "Si si, todos son widgets",
             "path"  : "assets/images/evento4.jpg"
         },
         {
             "id": 5,
             "title"  : "VIDEOJUEGOS",
+            "inscritos":"15",
+            "cupos":"25",
+            "fecha":"01-01-2023",
             "subtitle"  : "Desarrolando un videojuego en Unity",
             "path"  : "assets/images/evento5.jpg"
         }
+        
     ]
 }
