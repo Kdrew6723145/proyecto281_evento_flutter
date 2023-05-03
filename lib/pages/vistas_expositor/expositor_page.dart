@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:eventos_flutter/pages/vistas_expositor/material_page.dart';
 import 'package:eventos_flutter/providers/dev_eventos.dart';
 import 'package:eventos_flutter/providers/dev_usuario.dart';
+import 'package:eventos_flutter/widget/login_widget/header.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
@@ -20,11 +22,6 @@ class ExpositorPage extends StatefulWidget {
 }
 
 class _ExpositorPageState extends State<ExpositorPage> {
-  final screens = [
-    const VistaPrincipalPartic(),
-    const VistaCertificados(),
-  ];
-
   int _index = 0;
   PageController controller = PageController();
 
@@ -37,28 +34,21 @@ class _ExpositorPageState extends State<ExpositorPage> {
 
     return Scaffold(
       backgroundColor: HexColor("#16285A"),
-      body: screens[_index],
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color.fromARGB(255, 0, 56, 102),
-        selectedItemColor: const Color.fromARGB(255, 224, 205, 31),
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _index,
-        unselectedItemColor: Colors.white,
-        onTap: (index) => setState(() {
-          _index = index;
-        }),
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-            ),
-            label: "Actividades",
+      body: Column(
+        children: [
+          Header(),
+          SizedBox(
+            height: 20,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-            ),
-            label: "Material",
+          WidgetExpositor(),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+                shadowColor: Colors.white,
+                backgroundColor: HexColor("#283B71")),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text("SALIR"),
           ),
         ],
       ),
