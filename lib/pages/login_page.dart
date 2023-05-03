@@ -42,8 +42,7 @@ class _LoginPageState extends State<LoginPage> {
   Future login() async {
     nu = username.toString();
     np = password.toString();
-    final resultado = await Dio().post(
-        'https://eventosjwtbackend-production.up.railway.app/login/usuario/',
+    final resultado = await Dio().post('http://localhost:8000/login/usuario/',
         data: {"nick": nu, "clave": np});
 
     Map<String, dynamic> resp = jsonDecode(resultado.toString());

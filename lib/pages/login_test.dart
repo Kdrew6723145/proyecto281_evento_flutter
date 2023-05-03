@@ -35,8 +35,7 @@ class _LoginTestState extends State<LoginTest> {
 
   Future login() async {
     nc = controllerUser.text;
-    final resultado = await Dio().post(
-        'https://eventosjwtbackend-production.up.railway.app/login/usuario/',
+    final resultado = await Dio().post('http://192.168.0.16:8000/login/usuario/',
         data: {"nick": controllerUser.text, "clave": controllerPassword.text});
     resultado;
 
