@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-class Usuario with ChangeNotifier {
+class Usuario with ChangeNotifier{
   String _nick = "";
   String _rol = "";
   String _nombre = "";
   String _email = "";
 
   get resActividad {
-    var mapa_even = {
+    var mapaAct = {
       "nick": _nick,
       "rol": _rol,
       "nombre": _nombre,
       "email": _email
     };
 
-    return mapa_even;
+    return mapaAct;
   }
 
   void reqActividad(String nick, String rol, String nombre, String email) {
