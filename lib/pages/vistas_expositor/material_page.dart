@@ -1,8 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:snippet_coder_utils/hex_color.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:http/http.dart' as http;
 
 import '../../services/selected_file.dart';
 
@@ -18,6 +21,36 @@ class _WidgetExpositorState extends State<WidgetExpositor> {
 
   @override
   Widget build(BuildContext context) {
+    Future _cargar() async {
+      FilePickerResult? result = await FilePicker.platform.pickFiles();
+      try {
+        if (result != null) {
+          PlatformFile file = result.files.first;
+
+          print(file.name);
+          print(file.bytes);
+          print(file.size);
+          print(file.extension);
+          print(file.path);
+          var url = 'http://192.168.0.16:8000/upload';
+          var postUri = Uri.parse(url);
+          var request = http.MultipartRequest('POST', postUri);
+          request.files.add(
+              await http.MultipartFile.fromPath("file", file.path.toString()));
+          var res = await request.send().then((response) {
+            http.Response.fromStream(response).then((onValue) {
+              print(response.statusCode);
+            });
+          });
+          return res.reasonPhrase;
+        } else {
+          // Usuario cancela carga
+        }
+      } catch (Exception) {
+        Exception.toString();
+      }
+    }
+
     return Material(
       elevation: 5,
       color: Colors.white,
@@ -47,32 +80,22 @@ class _WidgetExpositorState extends State<WidgetExpositor> {
                   fontSize: 18,
                 ),
               ),
-              Column(
-                children: [
-                  imagen_to_subir != null
-                      ? Image.file(imagen_to_subir!)
-                      : Container(
-                          color: Colors.red,
-                          width: double.infinity,
-                          height: 200,
-                        ),
-                ],
-              ),
               SizedBox(
                 height: 100,
               ),
               ElevatedButton(
-                onPressed: () async {
-                  final image = await getImage();
-                  setState(() {
-                    imagen_to_subir = File(image!.path);
-                  });
+                onPressed: () {
+                  _cargar();
+                  Fluttertoast.showToast(
+                      msg: "Archivo Subido Correctamente",
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.CENTER,
+                      timeInSecForIosWeb: 2,
+                      backgroundColor: Colors.red,
+                      textColor: Colors.white,
+                      fontSize: 16.0);
                 },
-                child: const Text("Seleccionar Imagen"),
-              ),
-              ElevatedButton(
-                onPressed: () => {},
-                child: const Text("Subir Imagen"),
+                child: const Text("Seleccionar Archivo"),
               ),
             ],
           )),

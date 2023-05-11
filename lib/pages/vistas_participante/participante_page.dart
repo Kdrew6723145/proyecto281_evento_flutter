@@ -1,5 +1,6 @@
 import 'package:eventos_flutter/pages/vistas_participante/vista_certificados.dart';
 import 'package:eventos_flutter/pages/vistas_participante/vista_comentarios.dart';
+import 'package:eventos_flutter/pages/vistas_participante/vista_material.dart';
 import 'package:eventos_flutter/pages/vistas_participante/vista_principal_partic.dart';
 import 'package:flutter/material.dart';
 import 'package:snippet_coder_utils/hex_color.dart';
@@ -15,6 +16,7 @@ class _ParticipantePageState extends State<ParticipantePage> {
   final screens = [
     const VistaPrincipalPartic(),
     const VistaCertificados(),
+    const VistaMaterialDescarga()
   ];
 
   int _index = 0;
@@ -49,6 +51,13 @@ class _ParticipantePageState extends State<ParticipantePage> {
             ),
             label: "Certificados",
           ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.archive_rounded,
+            ),
+            label: "Material",
+          ),
+          
         ],
       ),
     );
